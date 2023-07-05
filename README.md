@@ -29,4 +29,9 @@ npm run build
 
 ## Vorgehen
 1. auf scorebat.com API erstellt
-2. 
+2. Neues Dokument erstellt und Vue installiert
+3. Files angeschaut und sortiert
+4. Website ohne API aufgebaut und getestet
+5. API hinzugefügt
+6. Filteroption hinzugefügt
+7. Ballanimation erstellt
