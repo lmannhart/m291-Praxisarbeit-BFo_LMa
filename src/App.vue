@@ -1,17 +1,12 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <header>
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
     <div class="box">
-  <div class="shadow"></div>
-  <div class="gravity">
-    <div class="ball"></div>
-  </div>
-</div>
+      <div class="shadow"></div>
+      <div class="gravity">
+        <div class="ball"></div>
+      </div>
+    </div>
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -20,11 +15,60 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Live</RouterLink>
         <RouterLink to="/about">Highlights</RouterLink>
       </nav>
+
+
+      <form>
+    <select id="competitions" v-model="store.competition_selected">
+      <option value="ARGENTINIA: Primera Nacional">ARGENTINIA: Primera Nacional</option>
+      <option value="BRAZIL: Serie A">BRAZIL: Serie A</option>
+      <option value="CHAMPIONS LEAGUE: FINAL">CHAMPIONS LEAGUE: FINAL</option>
+      <option value="CHINA: Super League">CHINA: Super League</option>
+      <option value="COPA LIBERATORES: GROUP STAGE">COPA LIBERATORES: GROUP STAGE</option>
+      <option value="ENGLAND: Premier League">ENGLAND: Premier League</option>
+      <option value="ENGLAND: FA Cup">ENGLAND: FA Cup</option>
+      <option value="FRANCE: Ligue 1">FRANCE: Ligue 1</option>
+      <option value="INTERNATIONAL: Club Friendlies">INTERNATIONAL: Club Friendlies</option>
+      <option value="ITALY: Serie A">ITALY: Serie A</option>
+      <option value="JAPAN: J-League">JAPAN: J-League</option>
+      <option value="MEXICO: Apertura">MEXICO: Apertura</option>
+      <option value="MYANMAR: National League">MYANMAR: National League</option>
+      <option value="SPAIN: La Liga">SPAIN: La Liga</option>
+      <option value="UEFA NATIONS LEAGUE A, Playoffs">UEFA NATIONS LEAGUE A, Playoffs</option>
+      <option value="WORLD: INTERNATIONAL FRIENDLIES">WORLD: INTERNATIONAL FRIENDLIES</option>
+    </select>
+  </form>
+  
     </div>
+
   </header>
+
+
 
   <RouterView />
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+import { store } from "@/store";
+</script>
+
+<script>
+export default {
+  name: "CompetitionSelect",
+  data() {
+    // hier wird ein JS Objekt mit alle Daten erstellt
+    return {}
+  },
+  created() {
+    // Wir einmalig gestartet
+
+  },
+  methods: {
+    
+  },
+  };
+</script>
 
 <style scoped>
 header {
@@ -45,7 +89,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  color: hsla(160, 100%, 37%, 1);
 }
 
 nav a.router-link-exact-active:hover {
@@ -94,7 +138,7 @@ nav a:first-of-type {
   width: 140px;
   height: 140px;
   position: relative;
-  
+
   .shadow {
     position: absolute;
     width: 40%;
@@ -107,11 +151,13 @@ nav a:first-of-type {
     animation: shadowScale 1.5s linear infinite;
   }
 }
+
 .gravity {
   width: 40px;
   height: 40px;
   animation: bounce 1.5s cubic-bezier(0.68, 0.35, 0.29, 0.54) infinite;
 }
+
 .ball {
   width: 40px;
   height: 40px;
@@ -122,17 +168,30 @@ nav a:first-of-type {
 
 @keyframes roll {
   0% {}
-  100% { transform: rotate(360deg) }
+
+  100% {
+    transform: rotate(360deg)
+  }
 }
+
 @keyframes bounce {
   0% {}
-  50% { transform: translateY(100px) }
-  100% {}
-}
-@keyframes shadowScale {
-  0% {}
-  50% { transform: scaleX(1); opacity: .8;}
+
+  50% {
+    transform: translateY(100px)
+  }
+
   100% {}
 }
 
+@keyframes shadowScale {
+  0% {}
+
+  50% {
+    transform: scaleX(1);
+    opacity: .8;
+  }
+
+  100% {}
+}
 </style>
