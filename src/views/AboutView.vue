@@ -13,13 +13,17 @@ import { store } from "@/store";
         <th>Wettbewerb</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody v-if="matches.length > 0">
       <tr v-for="match in matches">
         <td class="thumbnail"><a :href="match.matchviewUrl" target="_blank"><img :src="match.thumbnail"></a> </td>
         <td>{{ match.title }}</td>
         <td>{{ match.competition }}</td>
       </tr>
-
+    </tbody>
+    <tbody v-else>
+      <tr>
+        <td colspan="3">Aktuell keine Highlights in dieser Liga vorhanden. Wähle eine andere Liga aus.</td>
+      </tr>
     </tbody>
   </table>
 </template>
